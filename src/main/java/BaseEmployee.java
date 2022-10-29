@@ -15,6 +15,10 @@ public abstract class BaseEmployee implements IEmployee {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public abstract int getSalary();
+
     @Override
     public int getBaseSalary() {
         return baseSalary;
@@ -22,5 +26,13 @@ public abstract class BaseEmployee implements IEmployee {
     @Override
     public void setBaseSalary(int baseSalary) {
         this.baseSalary = baseSalary;
+    }
+
+    public static int getSalary(Month[] monthArray, int baseSalary) {
+        int days = 0;
+        for (Month month : monthArray) {
+            days += month.getDaysWork();
+        }
+        return baseSalary * days;
     }
 }
